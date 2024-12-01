@@ -8,17 +8,21 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
+    public void clickLoginButton() {
+        driver.findElement(By.cssSelector("#cookiesplus-form > div.cookiesplus-actions.col-12.col-xs-12 > div.first-layer > div:nth-child(1) > div:nth-child(1) > button > span")).click();
+    }
 
     @FindBy(xpath = "//input[@id='pass']/../../button")
-    private WebElement signInButton;
+    private WebElement signInButton = driver.findElement(By.cssSelector("#submit-login"));
 
 
     @FindBy(id = "user")
-    private WebElement emailInput;
+    private WebElement emailInput = driver.findElement(By.cssSelector("#login-form > section > div:nth-child(2) > div.col-md-6 > input"));
+
 
 
     @FindBy(id = "pass")
-    private WebElement passwordInput;
+    private WebElement passwordInput = driver.findElement(By.cssSelector("#login-form > section > div:nth-child(3) > div.col-md-6 > div > input"));
 
 
     @FindBy(xpath = "//h1[contains(text(),'Sign in')]")
@@ -26,6 +30,7 @@ public class LoginPage extends BasePage {
 
     @FindBy(className = "error-message")
     private WebElement errorMessageElement;
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
